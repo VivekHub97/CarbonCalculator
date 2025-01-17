@@ -42,10 +42,11 @@ public class UserCLIController implements CommandLineRunner {
             double co2Emission = calculatorService.calculateCo2(start, end, transportationMethod);
             
             if(co2Emission != -1)
-            System.out.printf("your trip caused " + (Math.round(co2Emission * 10.0))/10.0 + "kg of CO2-equivalent");
+            System.out.printf("your trip caused " + co2Emission + "kg of CO2-equivalent");
+            System.exit(0);
     }
     
-    private Map<String, String> parseArgs(String[] args) {
+    Map<String, String> parseArgs(String[] args) {
         Map<String, String> params = new HashMap<>();
         for (int i = 0; i < args.length; i++) {
             if (args[i].startsWith("--")) {

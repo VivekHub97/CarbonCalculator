@@ -38,8 +38,9 @@ public class CalculatorService {
 			return -1;
 		}
 		double emissionFactor = TransportMethod.getValue(transportMethodType).getEmissionFactor();
+		double emissionKgs = (distance / 1000) * (emissionFactor / 1000); // to kgs
 
-		return (distance / 1000) * (emissionFactor / 1000); // to kgs
+		return (Math.round(emissionKgs * 10.0))/10.0;
 	}
 
 	private double fetchDistance(String start, String end) {
@@ -51,14 +52,14 @@ public class CalculatorService {
 			coordStartJson = feignClient.getCoordinates(apiKey, start, NO_OF_CITIES);
 			coordEndJson = feignClient.getCoordinates(apiKey, end, NO_OF_CITIES);
 		} catch (Exception e) {
-			System.err.println("Response from x API: " + e.getMessage());
+			System.err.println("Response from API: " + e.getMessage());
 			System.out.println("Error fetching from the API");
 			return -1;
 		}
 
 		Geocode startGeocode = JsonUtil.parseJson(coordStartJson, Geocode.class);
 		Geocode endGeocode = JsonUtil.parseJson(coordEndJson, Geocode.class);
-		System.out.println("Start Geocode: " + startGeocode.toString());
+		//System.out.println("Start Geocode: " + startGeocode.toString());
 
 		// Extract coordinates
 		String startCoordinates = extractCoordinates(startGeocode);
