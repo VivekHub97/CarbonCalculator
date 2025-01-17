@@ -7,7 +7,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Geocode {
 
-    @JsonProperty("features")
+    @Override
+	public String toString() {
+		return "Geocode [features=" + features + "]";
+	}
+
+	@JsonProperty("features")
     private List<Feature> features;
 
     public List<Feature> getFeatures() {
@@ -20,7 +25,12 @@ public class Geocode {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Feature {
-        @JsonProperty("geometry") // could have used geometry.coordinates
+        @Override
+		public String toString() {
+			return "Feature [geometry=" + geometry + "]";
+		}
+
+		@JsonProperty("geometry") // could have used geometry.coordinates
         private Geometry geometry;
 
         public Geometry getGeometry() {
@@ -34,7 +44,12 @@ public class Geocode {
     
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Geometry {
-        @JsonProperty("coordinates")
+        @Override
+		public String toString() {
+			return "Geometry [coordinates=" + coordinates + "]";
+		}
+
+		@JsonProperty("coordinates")
         private List<Double> coordinates;
 
         public List<Double> getCoordinates() {

@@ -18,4 +18,10 @@ public class Matrix {
     public void setDistances(List<List<Double>> distances) {
         this.distances = distances;
     }
+
+	@Override
+	public String toString() {
+		return "Matrix [distances=" + distances + "]";
+	}
+    
 }

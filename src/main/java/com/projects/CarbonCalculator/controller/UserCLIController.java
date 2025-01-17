@@ -31,19 +31,18 @@ public class UserCLIController implements CommandLineRunner {
 
         if (start == null || end == null || transportationMethod == null) {
             System.out.println("Invalid input. Please provide --start, --end, and --transportation-method parameters.");
+            System.out.println("Example: --start Hamburg --end Berlin --transportation-method diesel-car-medium");
             return;
         }
 
-        if (start != null && end != null && transportationMethod != null) {
             System.out.println("Start: " + start);
             System.out.println("End: " + end);
             System.out.println("Transportation Method: " + transportationMethod);
 
             double co2Emission = calculatorService.calculateCo2(start, end, transportationMethod);
+            
+            if(co2Emission != -1)
             System.out.printf("your trip caused " + (Math.round(co2Emission * 10.0))/10.0 + "kg of CO2-equivalent");
-        } else {
-            System.out.println("Invalid input. Please provide all required parameters.");
-        }
     }
     
     private Map<String, String> parseArgs(String[] args) {

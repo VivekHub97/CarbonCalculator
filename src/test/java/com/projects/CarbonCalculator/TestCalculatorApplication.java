@@ -1,10 +1,10 @@
-package com.sapProj.Co2Calculator;
+package com.projects.CarbonCalculator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Co2CalculatorApplicationTests {
+class TestCalculatorApplication {
 
 	@Test
 	void contextLoads() {
