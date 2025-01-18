@@ -58,3 +58,8 @@ out/
 # Generated files
 generated-sources/
 /.metadata/
+
+# Maven Wrapper
+/.mvn/
+mvnw
+mvnw.cmd
